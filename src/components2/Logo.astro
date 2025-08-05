@@ -1,0 +1,30 @@
+---
+import LogoLetter from "./LogoLetter.astro";
+export const palette = {
+    azulVivo: "#00A3E1",
+    salmonIntenso: "#F18B7A",
+    verdeAzulado: "#7EC89D",
+    rosaVibrante: "#ED729E",
+    naranjaFuerte: "#FF5722",
+    verdeBrillante: "#8BC34A",
+};
+---
+
+<div class="flex flex-col items-center font-harrypotter">
+    <div class="inline-flex space-x-0 pt-2">
+        <LogoLetter char="D" color={palette.azulVivo} />
+        <LogoLetter char="e" color={palette.salmonIntenso} />
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <LogoLetter char="t" color={palette.verdeAzulado} />
+        <LogoLetter char="i" color={palette.rosaVibrante} />
+        <LogoLetter char="n" color={palette.naranjaFuerte} />
+        <span>&nbsp;</span>
+        <span>&nbsp;</span>
+        <LogoLetter char="m" color={palette.verdeBrillante} />
+        <LogoLetter char="a" color={palette.azulVivo} />
+        <LogoLetter char="r" color={palette.rosaVibrante} />
+        <LogoLetter char="i" color={palette.naranjaFuerte} />
+        <LogoLetter char="n" color={palette.verdeBrillante} />
+    </div>
+</div>

@@ -1,0 +1,106 @@
+---
+const photos = ["/hero1.png", "/hero2.png", "/hero3.png", "/hero4.png"];
+---
+
+<div id="slider" class="relative overflow-visible px-4 h-full w-full">
+  <!-- Todas las polaroids se crean al inicio, pero solo la primera visible -->
+  {photos.map((photo, index) => (
+    <div 
+      class="polaroid absolute w-full"
+      data-index={index}
+      style={`
+        background: #fcfcfa;
+        padding: 15px 15px 40px 15px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        top: 50%;
+        left: 50%;
+        opacity: ${index === 0 ? '1' : '0'};
+        transform: translate(-50%, -50%) rotate(0deg) scale(${index === 0 ? '1' : '0.85'});
+        transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+        z-index: ${photos.length - index}; 
+      `}
+    >
+      <img 
+        src={photo} 
+        alt={`Slide ${index + 1}`}
+        style="display: block; max-width: 100%; max-height: 100%; border: 1px solid #e0e0e0; filter: sepia(15%) brightness(98%) contrast(95%)"
+      />
+    </div>
+  ))}
+</div>
+
+<script type="module" client:load>
+  const DISPLAY_TIME = 2000; // tiempo entre fotos en ms
+  const FADE_OUT_TIME = 300; // tiempo para desvanecimiento en ms
+  
+  // Variables configurables para los valores aleatorios
+  const MAX_ANGLE = 4; // ángulo máximo de rotación en grados
+  const MAX_OFFSET = 10; // desplazamiento máximo en píxeles (hacia ambos lados)
+  
+  const slider = document.getElementById("slider");
+  const polaroids = Array.from(slider.querySelectorAll('.polaroid'));
+  const totalPolaroids = polaroids.length;
+  let currentIndex = 0;
+  let shownPolaroids = 1; // Comenzamos con una polaroid visible
+  
+  // Función para calcular ángulos y posiciones aleatorios
+  function generateRandomValues() {
+    polaroids.forEach(polaroid => {
+      const sign = Math.random() > 0.5 ? 1 : -1;
+      const angle = sign * Math.floor(Math.random() * MAX_ANGLE);
+      const offset = Math.floor(Math.random() * (MAX_OFFSET * 2 + 1)) - MAX_OFFSET;
+      
+      polaroid._angle = angle;
+      polaroid._offset = offset;
+    });
+  }
+  
+  // Generar valores aleatorios iniciales
+  generateRandomValues();
+  
+  // Aplicar valores iniciales a la primera polaroid
+  const firstPolaroid = polaroids[0];
+  firstPolaroid.style.left = `calc(50% + ${firstPolaroid._offset}px)`;
+  firstPolaroid.style.transform = `translate(-50%, -50%) rotate(${firstPolaroid._angle}deg) scale(1)`;
+  
+  // Función para mostrar la siguiente polaroid
+  function showNextPolaroid() {
+    // Avanzar al siguiente índice
+    currentIndex = (currentIndex + 1) % totalPolaroids;
+    
+    // Si llegamos al inicio de nuevo, ocultamos todas menos la primera
+    if (currentIndex === 0) {
+      // Generar nuevos valores aleatorios para el próximo ciclo
+      generateRandomValues();
+      
+      // Resetear todas las polaroids excepto la actual
+      polaroids.forEach((polaroid, idx) => {
+        if (idx !== 0) {
+          polaroid.style.opacity = "0";
+          polaroid.style.transform = `translate(-50%, -50%) rotate(${polaroid._angle}deg) scale(0.85)`;
+        }
+      });
+      
+      // Mostrar solo la primera polaroid con sus nuevos valores aleatorios
+      const firstPolaroid = polaroids[0];
+      firstPolaroid.style.left = `calc(50% + ${firstPolaroid._offset}px)`;
+      firstPolaroid.style.opacity = "1";
+      firstPolaroid.style.transform = `translate(-50%, -50%) rotate(${firstPolaroid._angle}deg) scale(1)`;
+      firstPolaroid.style.zIndex = totalPolaroids;
+      
+      shownPolaroids = 1;
+    } else {
+      // Mostrar la nueva polaroid con sus valores aleatorios predefinidos
+      const nextPolaroid = polaroids[currentIndex];
+      nextPolaroid.style.left = `calc(50% + ${nextPolaroid._offset}px)`;
+      nextPolaroid.style.opacity = "1";
+      nextPolaroid.style.transform = `translate(-50%, -50%) rotate(${nextPolaroid._angle}deg) scale(1)`;
+      nextPolaroid.style.zIndex = totalPolaroids + currentIndex; // Aseguramos que esté por encima
+      
+      shownPolaroids++;
+    }
+  }
+
+  // Iniciar carrusel
+  setInterval(showNextPolaroid, DISPLAY_TIME);
+</script>

@@ -1,0 +1,76 @@
+---
+import CarouselMultiple from "../components/CarouselMultiple.astro";
+import Carr from "../components/Carr.astro";
+import Carrousel from "./Carrousel.astro";
+
+const sec2Images = [
+    "new/SEC11_1_11zon.jpg",
+    "new/SEC12_2_11zon.jpg",
+    "new/SEC13_3_11zon.jpeg",
+    "new/SEC14_4_11zon.jpeg",
+    "new/SEC15_5_11zon.jpg",
+    "new/SEC23_6_11zon.jpg",
+    "new/SEC24_7_11zon.jpg",
+    "new/SEC25_8_11zon.jpg",
+    "new/SEC26_9_11zon.jpg",
+    "new/SEC27_10_11zon.jpg",
+];
+---
+
+<section class="mt-12">
+    <div class="flex flex-col">
+        <div class="items-center px-6">
+            <div>
+                <h1 class="text-3xl font-semibold text-primary text-center">
+                    ¡Bienvenidos a la magia De tin marinera!
+                </h1>
+                <p class="pt-8 text-text-primary text-lg">
+                    En De tin marin somos un equipo de intérpretes escénicos,
+                    titiriteros, cuentacuentos, talleristas, clowns y animadores
+                    comprometidos con el fomento de la imaginación, la
+                    creatividad y la lectura en la infancia. A través de la
+                    narración oral, el teatro de títeres y el juego, ofrecemos
+                    experiencias lúdicas y educativas que estimulan el
+                    desarrollo integral de niñas y niños.
+                </p>
+                <div class="py-8">
+                    <Carrousel id="sec2" images={sec2Images} ms={3000} />
+                </div>
+                <!-- <Carr images={sec2Images} height="600px" speed={1}/> -->
+                <h2 class="text-xl font-semibold text-secondary my-4">
+                    ¿Qué ofrecemos en De Tin Marín?
+                </h2>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>
+                        🎭 Espectáculos Teatrales Infantiles: cuentos, títeres,
+                        teatro negro y narración oral en propuestas lúdicas y
+                        participativas.
+                    </li>
+                    <li>
+                        🏫 Funciones a Domicilio o en Instituciones: llevamos
+                        nuestras propuestas a escuelas, jardines, bibliotecas,
+                        municipios y eventos privados.
+                    </li>
+                    <li>
+                        🧒👧 Experiencias Educativas y Creativas: funciones
+                        diseñadas para que niñas y niños no solo observen, ¡sino
+                        que también jueguen y participen!
+                    </li>
+                    <li>
+                        🪄 Propuestas Personalizadas para Cada Evento: adaptamos
+                        cada función al espacio, la edad y el tipo de público.
+                    </li>
+                    <li>
+                        📚 Actividades que Fomentan la Imaginación y el
+                        Aprendizaje: diseñadas para despertar la creatividad y
+                        el entusiasmo por aprender jugando.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- <div class="p-8">
+            <Carrousel id="sec2" images={sec2Images} ms={3000} />
+        </div> -->
+    </div>
+</section>

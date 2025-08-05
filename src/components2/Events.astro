@@ -1,0 +1,29 @@
+---
+import Carrousel from "./Carrousel.astro";
+
+const sec3Images = [
+    "new/SEC31_11_11zon.jpg",
+    "new/SEC32_12_11zon.jpg",
+    "new/SEC33_13_11zon.jpg",
+    "new/SEC34_14_11zon.jpg",
+    "new/SEC35_15_11zon.jpg",
+    "new/SEC36_16_11zon.jpeg",
+];
+---
+
+<section class="mt-12">
+    <div class="flex flex-col">
+        <div class="items-center px-6">
+            <div>
+                <h1 class="text-3xl font-semibold text-primary text-center">
+                    Nuestros eventos:
+                </h1>
+                
+            </div>
+        </div>
+
+        <div class="py-8 px-6">
+            <Carrousel id="sec3" images={sec3Images} ms={4000} />
+        </div>
+    </div>
+</section>

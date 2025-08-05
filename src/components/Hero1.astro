@@ -1,0 +1,58 @@
+---
+import SlotsPhotos from "./SlotsPhotos.astro";
+import CreazyButton from "./CrazyButton.astro";
+import { palette } from "./Navbar.astro";
+import CrazyButton from "./CrazyButton.astro";
+---
+
+<section class="flex flex-col md:flex-row border border-black">
+  <div class="w-full flex h-[700px] pt-24 pb-32">
+    <div class="w-full flex flex-col items-center justify-center pr-8">
+      <h1 
+        class="text-3xl md:text-5xl font-bold text-center text-[#ff6b6b] leading-[2]"
+      >
+        Regalale a tu peque la
+        <span class="relative inline-block">
+          <span
+            class="absolute -left-1 -right-1 -bottom-1 top-1 rounded-lg"
+            style={`z-index:0; 
+              transform: skew(-12deg); 
+              background-color: ${palette.verdeAzulado}; 
+              box-shadow: 0 0 1px rgba(0,0,0,0.2);
+              opacity: 0.9;`}></span>
+          <span class="relative z-10 text-white px-1">mejor experiencia</span>
+        </span>
+        en su día especial
+      </h1>
+      <div class="mt-8">
+        <CrazyButton>
+          <a
+            id="ctaButton"
+            href="https://wa.me/54123456789"
+            target="_blank">¡Agenda tu evento ya!</a
+          >
+        </CrazyButton>
+      </div>
+    </div>
+    <div
+      class=" flex w-full justify-center items-center overflow-visible pl-8"
+    >
+      <SlotsPhotos />
+    </div>
+  </div>
+  <!-- Ejemplo: comparación de 3 secciones -->
+
+  <!-- Columna de texto
+   <div class=" border boder-c"
+  <div class="flex-1 flex flex-col justify-center items-center p-8">
+    <h1 class="text-3xl md:text-5xl font-bold text-[#ff6b6b] text-center">
+      Regálale a tu peque la mejor experiencia en su día especial
+    </h1>
+    <CreazyButton class="mt-6">¡Agenda tu evento ya!</CreazyButton>
+  </div>
+
+  <div class="flex-1 relative overflow-hidden">
+    <SlotsPhotos />
+  </div>
+</section>-->
+</section>

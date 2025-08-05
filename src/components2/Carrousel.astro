@@ -1,0 +1,44 @@
+---
+export interface Props {
+    id: string;
+    images: string[];
+    ms: number;
+}
+const { id, images, ms = 3000 } = Astro.props;
+---
+
+<div
+    class="relative w-full aspect-[2/3] overflow-hidden"
+    id={`carousel-container-${id}`}
+>
+    {
+        images.map((image, index) => (
+            <img
+                src={image}
+                alt=""
+                class={`absolute top-0 left-0 w-full aspect-[2/3] object-cover transition-opacity duration-[2s] ${index === 0 ? "opacity-100" : "opacity-0"}`}
+            />
+        ))
+    }
+</div>
+
+<script is:inline define:vars={{ id, images, ms }}>
+    if (images.length > 1) {
+        let currentIndex = 0;
+        const container = document.getElementById(`carousel-container-${id}`);
+        const imgElements = Array.from(container.querySelectorAll("img"));
+
+        setInterval(() => {
+            // Ocultar la imagen actual
+            imgElements[currentIndex].classList.remove("opacity-100");
+            imgElements[currentIndex].classList.add("opacity-0");
+
+            // Avanzar al siguiente índice
+            currentIndex = (currentIndex + 1) % images.length;
+
+            // Mostrar la nueva imagen
+            imgElements[currentIndex].classList.remove("opacity-0");
+            imgElements[currentIndex].classList.add("opacity-100");
+        }, ms);
+    }
+</script>

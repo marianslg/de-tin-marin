@@ -1,0 +1,57 @@
+---
+const { text = "", href = "#" } = Astro.props;
+---
+
+<button class="cycle-btn py-4 px-2 text-2xl">
+    <span class="text-white p-2">
+        {text}
+    </span>
+</button>
+
+<style>
+    @keyframes colorCycle {
+        0% {
+            background: #019CDA; /* azul */
+            color: #fff;
+            transform: scale(0.9);
+        }
+        25% {
+            background: #14a2da; /* verde */
+            color: #fff;
+        }
+        50% {
+            background: #35a8d5; /* amarillo */
+            color: #111;
+            transform: scale(1.05);
+        }
+        75% {
+            background: #14a2da; /* verde */
+            color: #fff;
+        }
+        100% {
+            background: #019CDA; /* azul */
+            color: #fff;
+            transform: scale(0.9);
+        }
+    }
+
+    .cycle-btn {
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            sans-serif;
+        cursor: pointer;
+        display: inline-block;
+        /* outline: none; */
+        animation: colorCycle 3s infinite linear;
+        /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); */
+        position: relative;
+        white-space: nowrap;
+    }
+</style>

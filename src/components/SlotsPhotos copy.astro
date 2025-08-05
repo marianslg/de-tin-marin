@@ -1,0 +1,107 @@
+---
+const photos = [
+    "/public/hero1.png",
+    "/public/hero2.png",
+    "/public/hero3.png",
+    "/public/hero4.png",
+    // añade más rutas de fotos aquí
+];
+---
+
+
+<div>
+  {photos.map((src, i) => (
+    <div
+      data-slide-index={i}
+      class={i > 0 ? "hidden" : ""}
+    >
+      <img
+        src={src}
+        alt={`Slide ${i + 1}`}
+        class="w-full h-full object-cover rounded-xl shadow-lg"
+      />
+    </div>
+  ))}
+</div>
+<!-- 
+<style>
+  .polaroid {
+    /* ahora rellena todo el div padre */
+    position: absolute;
+    inset: 0;
+    padding: 0;               /* opcional: ajusta si quieres margen interno */
+    background: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform .5s, opacity .5s;
+    opacity: 0;
+    overflow: hidden;
+  }
+  .polaroid img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<div class="w-full h-full flex items-center justify-center border border-red-950">
+  <div id="pile" class="relative w-full h-full overflow-hidden  border-blue-500">
+    {
+      photos.map((src, i) => (
+        <div
+          class="polaroid"
+          style={`z-index: ${i};`}
+        >
+          <img src={src} alt={`Foto ${i+1}`} />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<div id={`carousel-${uniqueId}`} class="relative w-full h-full overflow-hidden">
+  {images.map((src, i) => (
+    <div
+      class="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+      data-slide-index={i}
+      style={`opacity: ${i === 0 ? 1 : 0}`}
+    >
+      <img
+        src={src}
+        alt={`Slide ${i+1}`}
+        class="w-full h-full object-cover rounded-xl shadow-lg"
+      />
+    </div>
+  ))}
+</div> -->
+
+<!-- <script client:load>
+    document.addEventListener("DOMContentLoaded", () => {
+        const pile = document.getElementById("pile");
+        const polaroids = Array.from(pile.querySelectorAll(".polaroid"));
+        let idx = 0;
+
+        function clearPile() {
+            polaroids.forEach((el) => {
+                el.style.opacity = "0";
+            });
+        }
+
+        function showNext() {
+            if (idx === 0) clearPile();
+            const el = polaroids[idx];
+            const rot = (Math.random() * 20 - 10).toFixed(2) + "deg";
+            const tx = (Math.random() * 40 - 20).toFixed(2) + "px";
+            const ty = (Math.random() * 40 - 20).toFixed(2) + "px";
+
+            el.style.zIndex = idx + 1;
+            el.style.opacity = "1";
+            el.style.transform = `translate(-50%, -50%) translate(${tx}, ${ty}) rotate(${rot})`;
+
+            idx = (idx + 1) % polaroids.length;
+        }
+
+        // Mostrar una foto cada 1s en bucle
+        setInterval(showNext, 2000);
+    });
+</script>  -->

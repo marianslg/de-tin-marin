@@ -1,0 +1,54 @@
+---
+export interface Props {
+  id: string;
+  images: string[];
+  ms: number;
+}
+const { id, images, ms = 3000 } = Astro.props;
+---
+
+<div
+  class="relative w-full aspect-square overflow-hidden"
+  id={`carousel-container-${id}`}
+>
+  {
+    images.map((image, index) => (
+      <img
+        src={image}
+        alt=""
+        class={`absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-in-out transform
+          ${index === 0 ? 'translate-x-0' : 'translate-x-full'}`}
+      />
+    ))
+  }
+</div>
+
+<script is:inline define:vars={{ id, images, ms }}>
+  if (images.length > 1) {
+    let current = 0;
+    const container = document.getElementById(`carousel-container-${id}`);
+    const imgs = Array.from(container.querySelectorAll('img'));
+
+    setInterval(() => {
+      const next = (current + 1) % imgs.length;
+
+      // aseguramos que 'next' parte siempre desde la derecha
+      imgs[next].classList.remove(
+        'translate-x-0',
+        '-translate-x-full',
+        'translate-x-full'
+      );
+      imgs[next].classList.add('translate-x-full');
+
+      // slide out current → left; slide in next ← right
+      imgs[current].classList.replace('translate-x-0', '-translate-x-full');
+      imgs[next].classList.replace('translate-x-full', 'translate-x-0');
+
+      // al acabar la transición, reiniciamos la que salió y actualizamos índice
+      setTimeout(() => {
+        imgs[current].classList.replace('-translate-x-full', 'translate-x-full');
+        current = next;
+      }, 700);
+    }, ms);
+  }
+</script>
