@@ -6,9 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build && touch dist/.nojekyll",
+    "deploy": "gh-pages --dotfiles -d dist"
   },
   "dependencies": {
     "astro": "^5.12.3"
