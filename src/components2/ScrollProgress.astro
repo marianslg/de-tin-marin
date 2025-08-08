@@ -1,0 +1,53 @@
+---
+import { palette } from './Logo.astro';
+
+// Construir el gradiente y la sombra en frontmatter
+const gradient = `linear-gradient(
+  90deg,
+  ${palette.azulVivo},
+  ${palette.salmonIntenso},
+  ${palette.verdeAzulado},
+  ${palette.rosaVibrante},
+  ${palette.naranjaFuerte},
+  ${palette.verdeBrillante}
+)`;
+
+const boxShadow = `0 0 8px ${palette.azulVivo}, 0 0 8px ${palette.rosaVibrante}, 0 0 8px ${palette.naranjaFuerte}`;
+
+// Combinar todos los estilos en un objeto
+const progressStyles = {
+  background: gradient,
+//   boxShadow: boxShadow
+};
+---
+
+<style>
+.scroll-progress {
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  z-index: 40; /* Menor que el z-50 del header */
+  transition: width 0.2s ease-out;
+  margin-top: -3px; /* Compensación para pegarlo al header */
+}
+</style>
+
+<div
+  id="scroll-progress"
+  class="scroll-progress"
+  style={progressStyles}
+/>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const top = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (top / height) * 100;
+      bar.style.width = `${pct}%`;
+    });
+  });
+</script>

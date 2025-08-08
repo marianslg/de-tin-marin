@@ -17,7 +17,7 @@ const { id, images, ms = 3000 } = Astro.props;
         src={image}
         alt=""
         class={`absolute inset-0 w-full h-full object-contain transition-transform duration-700 ease-in-out transform
-          ${index === 0 ? 'translate-x-0' : 'translate-x-full'}`}
+          ${index === 0 ? 'translate-x-0' : 'translate-x-full invisible'}`}
       />
     ))
   }
@@ -30,25 +30,26 @@ const { id, images, ms = 3000 } = Astro.props;
     const imgs = Array.from(container.querySelectorAll('img'));
 
     setInterval(() => {
-      const next = (current + 1) % imgs.length;
+      const next = current === imgs.length - 1 ? 0 : current + 1;
 
-      // aseguramos que 'next' parte siempre desde la derecha
-      imgs[next].classList.remove(
-        'translate-x-0',
-        '-translate-x-full',
-        'translate-x-full'
-      );
-      imgs[next].classList.add('translate-x-full');
+      // 1) Hacemos visible el siguiente slide
+      imgs[next].classList.remove('invisible');
 
-      // slide out current → left; slide in next ← right
+      // 2) Preparamos y animamos: actual sale a la izq, siguiente entra desde la der.
+      imgs[next].classList.replace('translate-x-0', 'translate-x-full');
       imgs[current].classList.replace('translate-x-0', '-translate-x-full');
       imgs[next].classList.replace('translate-x-full', 'translate-x-0');
 
-      // al acabar la transición, reiniciamos la que salió y actualizamos índice
-      setTimeout(() => {
+      // 3) Al acabar la transición del actual, lo reposicionamos off-screen y lo ocultamos
+      const onTransitionEnd = (e) => {
+        if (e.propertyName !== 'transform') return;
         imgs[current].classList.replace('-translate-x-full', 'translate-x-full');
+        imgs[current].classList.add('invisible');
+        imgs[current].removeEventListener('transitionend', onTransitionEnd);
         current = next;
-      }, 700);
+      };
+      imgs[current].addEventListener('transitionend', onTransitionEnd);
+
     }, ms);
   }
 </script>

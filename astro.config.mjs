@@ -7,7 +7,4 @@ export default defineConfig({
   output: 'static',
   base: '/de-tin-marin/',
   // fuerza rutas relativas (quita la barra inicial de todas las assets)
-  buildOptions: {
-    assets: 'relative',
-  },
 });
