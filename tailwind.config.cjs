@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: false,
   content: [
     "./src/**/*.{html,js,ts,jsx,tsx,astro}" // ajustá según tu estructura
   ],
@@ -24,8 +25,11 @@ module.exports = {
       },
       boxShadow: {
         card: "0 8px 24px rgba(0,0,0,0.08)"
+      },
+fontSize: {
+        // Sobreescribimos el 4xl por defecto
+        '4xl': ['2.5rem', { lineHeight: '1' }],
       }
-
     },
     fontFamily: {
       harrypotter: ['"HarryPotter"', 'sans-serif'],

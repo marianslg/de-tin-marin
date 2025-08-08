@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  base: '/de-tin-marin/',
+  base: '/',
   // fuerza rutas relativas (quita la barra inicial de todas las assets)
   buildOptions: {
     assets: 'relative',
