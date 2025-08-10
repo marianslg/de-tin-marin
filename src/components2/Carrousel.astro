@@ -8,7 +8,7 @@ const { id, images, ms = 3000 } = Astro.props;
 ---
 
 <div
-    class="relative w-full aspect-[2/3] overflow-hidden"
+    class="relative w-full aspect-[3/4] overflow-hidden"
     id={`carousel-container-${id}`}
 >
     {
@@ -16,7 +16,7 @@ const { id, images, ms = 3000 } = Astro.props;
             <img
                 src={image}
                 alt=""
-                class={`absolute top-0 left-0 w-full aspect-[2/3] object-cover transition-opacity duration-[2s] ${index === 0 ? "opacity-100" : "opacity-0"}`}
+                class={`absolute top-1/2 left-1/2 w-full aspect-[3/4] object-cover transition-opacity duration-[2s] -translate-x-1/2 -translate-y-1/2 ${index === 0 ? "opacity-100" : "opacity-0"}`}
             />
         ))
     }

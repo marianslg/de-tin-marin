@@ -28,7 +28,7 @@ module.exports = {
       },
 fontSize: {
         // Sobreescribimos el 4xl por defecto
-        '4xl': ['2.5rem', { lineHeight: '1' }],
+        '4xl': ['2.3rem', { lineHeight: '1' }],
       }
     },
     fontFamily: {
@@ -36,6 +36,7 @@ fontSize: {
       CreamCake: ['"Cream Cake Bold"', 'sans-serif'],
       DancingScript: ['"Dancing Script"', 'sans-serif'],
       Poppins: ['"Poppins"', 'sans-serif'],
+      Kavoon: ['"Kavoon"', 'sans-serif'],
     },
 
   },

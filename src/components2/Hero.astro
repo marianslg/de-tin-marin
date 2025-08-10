@@ -1,0 +1,38 @@
+---
+import CrazyButton from "./CrazyButton.astro";
+import Carrousel from "./Carrousel.astro";
+
+const sec2Images = [
+    "nene_1-3.png",
+    "hero_1.jpg",
+    "hero_2.jpg",
+    "hero_3.jpg",
+    "hero_4.jpg",
+    "hero_5.jpg",
+];
+---
+
+<section class="grid grid-cols-1 md:grid-cols-2 items-center px-8 md:px-0">
+    <div class="flex flex-col items-center text-center text-secondary">
+        <h1 class="text-4xl py-14 md:text-6xl font-extrabold md:py-0">
+            Regalale a tu peque la
+            <span
+                class="italic font-semibold font-Kavoon relative inline-block"
+            >
+                mejor experiencia
+            </span>
+            en su día especial
+        </h1>
+        <div class="pb-14 md:py-12">
+            <CrazyButton
+                text="¡Agenda tu evento ya!"
+                url="https://wa.me/54123456789"
+            />
+        </div>
+    </div>
+    <div
+        class="flex justify-center items-center text-center md:col-span-1 md:h-full md:p-12"
+    >
+        <Carrousel id="sec2" images={sec2Images} ms={5000} />
+    </div>
+</section>
