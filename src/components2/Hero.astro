@@ -2,24 +2,26 @@
 import CrazyButton from "./CrazyButton.astro";
 import Carrousel from "./Carrousel.astro";
 
-const sec2Images = [
-    "nene_1-3.png",
+const images = [
     "hero_1.jpg",
     "hero_2.jpg",
     "hero_3.jpg",
     "hero_4.jpg",
     "hero_5.jpg",
 ];
+
+const desktopImages = ["hero_0.png", ...images];
+const mobileImages = ["hero_0_movil.png", ...images];
 ---
 
 <section class="grid grid-cols-1 md:grid-cols-2 items-center px-8 md:px-0">
-    <div class="flex flex-col items-center text-center text-secondary">
+    <div class="flex flex-col items-center text-center text-[#a94064]">
         <h1 class="text-4xl py-14 md:text-6xl font-extrabold md:py-0">
             Regalale a tu peque la
             <span
-                class="italic font-semibold font-Kavoon relative inline-block"
+                class="italic font-semibold font-Kavoon relative inline-block text-[#ED729E] text-stroke"
             >
-                mejor experiencia
+               mejor experiencia
             </span>
             en su día especial
         </h1>
@@ -30,9 +32,27 @@ const sec2Images = [
             />
         </div>
     </div>
+
     <div
         class="flex justify-center items-center text-center md:col-span-1 md:h-full md:p-12"
     >
-        <Carrousel id="sec2" images={sec2Images} ms={5000} />
+        <!-- Móvil: hasta md -->
+        <div class="block md:hidden w-full">
+            <Carrousel
+                client:visible
+                id="hero-mobile"
+                images={mobileImages}
+                ms={5000}
+            />
+        </div>
+        <!-- Escritorio: desde md en adelante -->
+        <div class="hidden md:block w-full">
+            <Carrousel
+                client:visible
+                id="hero-desktop"
+                images={desktopImages}
+                ms={5000}
+            />
+        </div>
     </div>
 </section>

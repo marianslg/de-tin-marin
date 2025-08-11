@@ -2,7 +2,7 @@
 const { text = "", href = "#" } = Astro.props;
 ---
 
-<button class="cycle-btn py-2 px-1 text-2xl">
+<button class="cycle-btn py-2 px-1 text-2xl md:text-5xl">
     <span class="text-white p-2">
         {text}
     </span>
@@ -20,7 +20,7 @@ const { text = "", href = "#" } = Astro.props;
             color: #fff;
         }
         50% {
-            background: #35a8d5; /* amarillo */
+            background: #6ab2cf; /* amarillo */
             color: #111;
             transform: scale(1.05);
         }
@@ -49,9 +49,16 @@ const { text = "", href = "#" } = Astro.props;
         cursor: pointer;
         display: inline-block;
         /* outline: none; */
-        animation: colorCycle 3s infinite linear;
+        animation: colorCycle 2s infinite linear;
         /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); */
         position: relative;
         white-space: nowrap;
+    }
+
+.cycle-btn:hover {
+        animation-play-state: paused;
+        background-color: #FF6B00; /* Naranja vibrante al hacer hover */
+        transform: scale(1.05);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 </style>
