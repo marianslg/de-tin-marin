@@ -28,7 +28,8 @@ module.exports = {
       },
 fontSize: {
         // Sobreescribimos el 4xl por defecto
-        '4xl': ['2.3rem', { lineHeight: '1' }],
+        '4xl': ['2.1rem', { lineHeight: '1' }],
+        '6xl': ['3.3rem', { lineHeight: '1' }],
       }
     },
     fontFamily: {

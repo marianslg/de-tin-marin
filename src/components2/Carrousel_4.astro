@@ -1,0 +1,84 @@
+---
+export interface Props {
+  id?: string;
+  images?: string[];
+  ms?: number;
+}
+const { id = 'carousel', images = [], ms = 3000 } = Astro.props;
+---
+
+<div id={`carousel-container-${id}`} class="relative w-full">
+  <div class="flex w-full gap-3 items-end overflow-visible" aria-hidden="false">
+    <!-- Imagen izquierda -->
+    <div class="flex-none w-[30%] flex justify-center" data-slot="0">
+      <div class="relative w-full pt-[100%] bg-gray-100 overflow-visible">
+        <img
+          src={images[0 % images.length] || ''}
+          alt=""
+          loading="lazy"
+          data-slot-img="0"
+          class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        />
+      </div>
+    </div>
+    
+    <!-- Imagen central (destacada) -->
+    <div class="flex-none w-[35%] flex justify-center" data-slot="1">
+      <div class="relative w-full pt-[100%] bg-gray-100 overflow-visible transform -translate-y-4 z-10 ">
+        <img
+          src={images[1 % images.length] || ''}
+          alt=""
+          loading="lazy"
+          data-slot-img="1"
+          class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        />
+      </div>
+    </div>
+    
+    <!-- Imagen derecha -->
+    <div class="flex-none w-[30%] flex justify-center" data-slot="2">
+      <div class="relative w-full pt-[100%] bg-gray-100 overflow-visible">
+        <img
+          src={images[2 % images.length] || ''}
+          alt=""
+          loading="lazy"
+          data-slot-img="2"
+          class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ id, images, ms }}>
+  (function () {
+    const container = document.getElementById(`carousel-container-${id}`);
+    if (!container) return;
+    const imgEls = Array.from(container.querySelectorAll('img[data-slot-img]'));
+    const total = Array.isArray(images) ? images.length : 0;
+    if (total === 0) return;
+
+    let current = 0;
+    const updateSlots = () => {
+      imgEls.forEach((el, idx) => {
+        const src = images[(current + idx) % total];
+        if (el.getAttribute('src') !== src) el.setAttribute('src', src);
+      });
+    };
+
+    updateSlots();
+
+    const intervalId = setInterval(() => {
+      current = (current + 1) % total;
+      updateSlots();
+    }, ms);
+
+    const mo = new MutationObserver(() => {
+      if (!document.body.contains(container)) {
+        clearInterval(intervalId);
+        mo.disconnect();
+      }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+  })();
+</script>

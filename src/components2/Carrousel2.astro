@@ -27,7 +27,7 @@ const { id, images, ms = 3000 } = Astro.props;
   if (images.length > 1) {
     let current = 0;
     const container = document.getElementById(`carousel-container-${id}`);
-    const imgs = Array.from(container.querySelectorAll('img'));
+    const imgs = Array.from(container.querySelectorAll('img')); 
 
     setInterval(() => {
       const next = current === imgs.length - 1 ? 0 : current + 1;

@@ -1,35 +1,51 @@
-<section class="py-8">
-    <div class="flex flex-col">
-        <div class="items-center px-6 my-8">
-            <h1 class="text-2xl font-semibold text-primary text-center">
+---
+import Carrousel from "./Carrousel.astro";
+const images = ["footer1.JPEG", "footer2.JPEG", "footer3.JPEG", 'footer4.JPEG', "footer5.JPEG", "footer6.JPEG"];
+---
+
+<section class="py-8" id="contactanos">
+    <div class="flex flex-col md:flex-row pt-8 md:pt-24 px-8 md:px-0">
+        <!-- Left side gray area -->
+        <div class="md:w-2/5 flex items-center justify-center">
+            <Carrousel
+                client:visible
+                id="footer-mobile"
+                images={images}
+                ms={5000}
+            />
+        </div>
+        
+        <!-- Right side content -->
+        <div class="md:w-3/5 pt-12 md:pt-0 md:px-8 flex flex-col items-center">
+           <h1 class="text-2xl md:text-5xl md:mb-12 font-semibold text-primary text-center">
                 Unite a nuestra comunidad!
             </h1>
-            <p class="pt-8 text-text-primary text-base">
+            <p class="text-text-primary text-base md:text-xl font-medium">
                 Suscribite a nuestro newsletter y enterate de todo lo nuevo que
                 traemos, ofertas, descuentos y más.
             </p>
-            <form class="mt-6 flex flex-row items-center justify-center gap-4 text-center">
+            <form class="mt-6 w-full flex flex-col sm:flex-row items-center gap-4">
                 <input
                     type="email"
                     placeholder="Ingresa tu email"
-                    class="px-4 py-2 border border-gray-300 rounded w-full max-w-md"
+                    class="flex-1 w-full px-4 py-2 border border-gray-300 rounded"
                 />
                 <button
                     type="submit"
-                    class="px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
+                    class="w-full sm:w-auto px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
                 >
                     Suscribirme
                 </button>
             </form>
             <div class="my-16">
                 <h2
-                    class="text-xl font-semibold text-secondary my-4 text-center"
+                    class="text-2xl font-semibold text-secondary my-4 text-center"
                 >
                     Contáctanos
                 </h2>
                 <div class="flex justify-center gap-6 mt-4">
                     <a
-                        href="https://wa.me/549XXXXXXXXXX"
+                        href="https://wa.me/54123456789"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="flex items-center gap-2 px-4 py-2 border rounded text-green-600 hover:bg-green-50 transition"
@@ -42,7 +58,7 @@
                         WhatsApp
                     </a>
                     <a
-                        href="https://instagram.com/tuusuario"
+                        href="https://www.instagram.com/detinmarinok/"
                         target="_blank"
                         rel="noopener noreferrer"
                         class="flex items-center gap-2 px-4 py-2 border rounded text-pink-500 hover:bg-pink-50 transition"
