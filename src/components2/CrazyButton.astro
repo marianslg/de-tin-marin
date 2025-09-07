@@ -2,8 +2,8 @@
 const { text = "", href = "#" } = Astro.props;
 ---
 
-<button class="cycle-btn py-2 px-1 text-2xl md:text-5xl">
-    <span class="text-white p-2">
+<button class="cycle-btn py-2 px-1 text-2xl md:text-4xl">
+    <span class="p-2">
         {text}
     </span>
 </button>
@@ -11,34 +11,46 @@ const { text = "", href = "#" } = Astro.props;
 <style>
     @keyframes colorCycle {
         0% {
-            background: #019CDA; /* azul */
-            color: #fff;
-            transform: scale(0.9);
+            background: #0066CC; /* azul */
+            color: #FFFFFF;
+            transform: scale(0.98);
         }
-        25% {
-            background: #14a2da; /* verde */
-            color: #fff;
+        16% {
+            background: #FF6B00; /* naranja */
+            color: #000000;
+            transform: scale(1);
         }
-        50% {
-            background: #6ab2cf; /* amarillo */
-            color: #111;
-            transform: scale(1.05);
+        32% {
+            background: #8A2BE2; /* púrpura */
+            color: #FFFFFF;
+            transform: scale(1.02);
         }
-        75% {
-            background: #14a2da; /* verde */
-            color: #fff;
+        48% {
+            background: #FF1493; /* rosa */
+            color: #FFFFFF;
+            transform: scale(1);
+        }
+        64% {
+            background: #00CC00; /* verde */
+            color: #000000;
+            transform: scale(0.98);
+        }
+        80% {
+            background: #FFD700; /* dorado */
+            color: #000000;
+            transform: scale(1);
         }
         100% {
-            background: #019CDA; /* azul */
-            color: #fff;
-            transform: scale(0.9);
+            background: #0066CC; /* azul (volvemos al inicio) */
+            color: #FFFFFF;
+            transform: scale(0.98);
         }
     }
 
     .cycle-btn {
-        border: none;
-        border-radius: 6px;
-        font-weight: 600;
+        padding: 20px 40px;
+        border-radius: 8px;
+        font-weight: 800;
         font-family:
             system-ui,
             -apple-system,
@@ -48,17 +60,17 @@ const { text = "", href = "#" } = Astro.props;
             sans-serif;
         cursor: pointer;
         display: inline-block;
-        /* outline: none; */
-        animation: colorCycle 2s infinite linear;
-        /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); */
+        animation: colorCycle 3s infinite linear; /* Reducido a 3 segundos */
         position: relative;
         white-space: nowrap;
+        transition: all 0.2s;
+        letter-spacing: 0.5px;
     }
 
-.cycle-btn:hover {
+    .cycle-btn:hover {
         animation-play-state: paused;
-        background-color: #FF6B00; /* Naranja vibrante al hacer hover */
+        background-color: #FF00FF; /* magenta al hacer hover */
+        color: #FFFFFF;
         transform: scale(1.05);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 </style>
