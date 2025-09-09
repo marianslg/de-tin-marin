@@ -28,7 +28,9 @@ const mobileImages = ["hero_0_movil.png", ...images];
         <div class="pb-14 md:py-12">
             <CrazyButton
                 text="¡Agenda tu evento ya!"
-                href="https://wa.me/5493816735654"
+                href={`https://wa.me/5493816735654?text=${encodeURIComponent(
+                  "Hola ! mi nombre es (ingresa tu nombre)  y me gustaría consultar por un evento para la fecha (día y mes) 😁🙌🏻"
+                )}`}
             />
         </div>
     </div>
