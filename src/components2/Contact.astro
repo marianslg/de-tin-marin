@@ -1,77 +1,165 @@
 ---
 import Carrousel from "./Carrousel.astro";
-const images = ["footer1.JPEG", "footer2.JPEG", "footer3.JPEG", 'footer4.JPEG', "footer5.JPEG", "footer6.JPEG"];
+const images = [
+  "footer1.JPEG",
+  "footer2.JPEG",
+  "footer3.JPEG",
+  "footer4.JPEG",
+  "footer5.JPEG",
+  "footer6.JPEG",
+];
 ---
 
 <section class="py-8" id="contactanos">
-    <div class="flex flex-col md:flex-row pt-8 md:pt-24 px-8 md:px-0">
-        <!-- Left side gray area -->
-        <div class="md:w-2/5 flex items-center justify-center">
-            <Carrousel
-                client:visible
-                id="footer-mobile"
-                images={images}
-                ms={5000}
-            />
-        </div>
-        
-        <!-- Right side content -->
-        <div class="md:w-3/5 pt-12 md:pt-0 md:px-8 flex flex-col items-center">
-           <h1 class="text-2xl md:text-5xl md:mb-12 font-semibold text-primary text-center">
-                Unite a nuestra comunidad!
-            </h1>
-            <p class="text-text-primary text-base md:text-xl font-medium">
-                Suscribite a nuestro newsletter y enterate de todo lo nuevo que
-                traemos, ofertas, descuentos y más.
-            </p>
-            <form class="mt-6 w-full flex flex-col sm:flex-row items-center gap-4">
-                <input
-                    type="email"
-                    placeholder="Ingresa tu email"
-                    class="flex-1 w-full px-4 py-2 border border-gray-300 rounded"
-                />
-                <button
-                    type="submit"
-                    class="w-full sm:w-auto px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
-                >
-                    Suscribirme
-                </button>
-            </form>
-            <div class="my-16">
-                <h2
-                    class="text-2xl font-semibold text-secondary my-4 text-center"
-                >
-                    Contáctanos
-                </h2>
-                <div class="flex justify-center gap-6 mt-4">
-                    <a
-                        href="https://wa.me/5493816735654"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center gap-2 px-4 py-2 border rounded text-green-600 hover:bg-green-50 transition"
-                    >
-                        <img
-                            src="whatsapp.png"
-                            alt="WhatsApp"
-                            class="h-6 w-6"
-                        />
-                        WhatsApp
-                    </a>
-                    <a
-                        href="https://www.instagram.com/detinmarinok/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="flex items-center gap-2 px-4 py-2 border rounded text-pink-500 hover:bg-pink-50 transition"
-                    >
-                        <img
-                            src="instagram.png"
-                            alt="Instagram"
-                            class="h-6 w-6"
-                        />
-                        Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
+  <div class="flex flex-col md:flex-row pt-8 md:pt-24 px-8 md:px-0">
+    <!-- Left side gray area -->
+    <div class="md:w-2/5 flex items-center justify-center">
+      <Carrousel client:visible id="footer-mobile" images={images} ms={5000} />
     </div>
+
+    <!-- Right side content -->
+    <div class="md:w-3/5 pt-12 md:pt-0 md:px-8 flex flex-col items-center">
+      <h1
+        class="text-2xl md:text-5xl md:mb-12 font-semibold text-primary text-center"
+      >
+        Unite a nuestra comunidad!
+      </h1>
+      <p class="text-text-primary text-base md:text-xl font-medium mb-6">
+        Suscribite a nuestro newsletter y enterate de todo lo nuevo que traemos,
+        ofertas, descuentos y más.
+      </p>
+
+      <!-- Mailchimp Form -->
+      <div id="mc_embed_signup" class="w-full">
+        <form
+          action="https://gmail.us12.list-manage.com/subscribe/post?u=317e6d3afe1c4d5f6be7ab197&id=d971daca72&f_id=006286e0f0"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          class="validate"
+          target="_blank"
+        >
+          <div id="mc_embed_signup_scroll">
+            <div class="mc-field-group">
+              <label for="mce-EMAIL"
+                >Dirección de correo electrónico <span class="asterisk">*</span
+                ></label
+              >
+              <input
+                type="email"
+                name="EMAIL"
+                class="required email"
+                id="mce-EMAIL"
+                required=""
+                value=""
+              />
+            </div>
+            <div id="mce-responses" class="clear foot">
+              <div
+                class="response"
+                id="mce-error-response"
+                style="display: none;"
+              >
+              </div>
+              <div
+                class="response"
+                id="mce-success-response"
+                style="display: none;"
+              >
+              </div>
+            </div>
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups -->
+            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+              <input
+                type="text"
+                name="b_317e6d3afe1c4d5f6be7ab197_d971daca72"
+                tabindex="-1"
+                value=""
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full sm:w-auto px-6 py-2 bg-secondary text-white rounded hover:bg-secondary-dark transition-colors"
+            >
+              Suscribirme
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="my-16">
+        <h2 class="text-2xl font-semibold text-secondary my-4 text-center">
+          Contáctanos
+        </h2>
+        <div class="flex justify-center gap-6 mt-4">
+          <a
+            href="https://wa.me/5493816735654"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2 border rounded text-green-600 hover:bg-green-50 transition"
+          >
+            <img src="whatsapp.png" alt="WhatsApp" class="h-6 w-6" />
+            WhatsApp
+          </a>
+          <a
+            href="https://www.instagram.com/detinmarinok/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 px-4 py-2 border rounded text-pink-500 hover:bg-pink-50 transition"
+          >
+            <img src="instagram.png" alt="Instagram" class="h-6 w-6" />
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- Mailchimp CSS y JavaScript -->
+<link
+  href="//cdn-images.mailchimp.com/embedcode/classic-061523.css"
+  rel="stylesheet"
+  type="text/css"
+/>
+<style is:global>
+  #mc_embed_signup {
+    background: #fff;
+    clear: left;
+    font:
+      14px Helvetica,
+      Arial,
+      sans-serif;
+    width: 100%;
+    max-width: 600px;
+  }
+  /* Puedes personalizar los estilos del formulario aquí */
+  #mc-embedded-subscribe {
+    color: white !important;
+  }
+</style>
+
+<script
+  is:inline
+  src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+<script is:inline>
+  (function ($) {
+    window.fnames = new Array();
+    window.ftypes = new Array();
+    fnames[0] = "EMAIL";
+    ftypes[0] = "email";
+    fnames[1] = "FNAME";
+    ftypes[1] = "text";
+    fnames[2] = "LNAME";
+    ftypes[2] = "text";
+    fnames[3] = "ADDRESS";
+    ftypes[3] = "address";
+    fnames[4] = "PHONE";
+    ftypes[4] = "phone";
+    fnames[5] = "BIRTHDAY";
+    ftypes[5] = "birthday";
+    fnames[6] = "COMPANY";
+    ftypes[6] = "text";
+  })(jQuery);
+  var $mcj = jQuery.noConflict(true);
+</script>
