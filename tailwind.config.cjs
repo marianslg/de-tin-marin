@@ -34,7 +34,6 @@ fontSize: {
     },
     fontFamily: {
       harrypotter: ['"HarryPotter"', 'sans-serif'],
-      CreamCake: ['"Cream Cake Bold"', 'sans-serif'],
       DancingScript: ['"Dancing Script"', 'sans-serif'],
       Poppins: ['"Poppins"', 'sans-serif'],
       Kavoon: ['"Kavoon"', 'sans-serif'],

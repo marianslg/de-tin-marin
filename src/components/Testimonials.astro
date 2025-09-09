@@ -1,7 +1,6 @@
 ---
-import Card from "./Card.astro";
-import Carrousel2 from "./Carrousel2.astro";
-import Carrousel_4 from "./Carrousel_4.astro";
+import CarouselMovil from "./CarrouselMovil.astro";
+import CarrouselDesktop from "./CarrouselDesktop.astro";
 const sec4Images2 = [
     "mama_1.png",
     "mama_2.png",
@@ -23,22 +22,14 @@ const sec4Images2 = [
 
         <div class="p-8 ">
             <div class="flex flex-wrap justify-center">
-                <!-- {testimonials.map((testimonial) => (
-          <Card
-            imgSrc={testimonial.imgSrc}
-            name={testimonial.name}
-            testimonial={testimonial.testimonial}
-          />
-        ))} -->
-        
                 <!-- móvil: carrusel estándar -->
                 <div class="w-full md:hidden">
-                    <Carrousel2 id="sec3-4-mobile" images={sec4Images2} ms={4000}/>
+                    <CarouselMovil id="sec3-4-mobile" images={sec4Images2} ms={4000}/>
                 </div>
 
                 <!-- pantallas grandes: carrusel para mostrar 4 items -->
                 <div class="hidden md:block w-full">
-                    <Carrousel_4 id="sec3-4-desktop" images={sec4Images2} ms={4000} />
+                    <CarrouselDesktop id="sec3-4-desktop" images={sec4Images2} ms={4000} />
                 </div>
             </div>
         </div>
